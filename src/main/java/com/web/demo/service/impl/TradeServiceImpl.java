@@ -19,7 +19,7 @@ public class TradeServiceImpl implements TradeService {
         TradeExample example = new TradeExample();
         example.setOrderByClause("id asc");
         example.setOffset((long)((page.getPageNum() - 1) * page.getPageSize()));
-        example.setLimit(page.getPageNum() * page.getPageSize());
+        example.setLimit(page.getPageSize());
         return tradeDao.selectByExample(example);
     }
 }

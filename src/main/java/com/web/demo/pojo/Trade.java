@@ -1,20 +1,18 @@
 package com.web.demo.pojo;
 
-import com.terran4j.commons.api2doc.annotations.ApiComment;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-/**
- * trade
- * @author 
- */
+@ApiModel(description = "交易实体")
 public class Trade implements Serializable {
-    @ApiComment(value = "id", sample = "12")
+    @ApiModelProperty("ID")
     private Long id;
-    @ApiComment(value = "商品名", sample = "农夫山泉")
+    @ApiModelProperty("商品名")
     private String trade_name;
-    @ApiComment(value = "价格", sample = "2.50")
+    @ApiModelProperty("价格")
     private BigDecimal price;
 
     private static final long serialVersionUID = 1L;

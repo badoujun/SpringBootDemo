@@ -1,11 +1,13 @@
 package com.web.demo.pojo;
 
-import com.terran4j.commons.api2doc.annotations.ApiComment;
-@ApiComment(value = "分页")
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "分页对象")
 public class Page {
-    @ApiComment(value = "页码", sample = "1")
+    @ApiModelProperty("页码,默认1")
     private Integer pageNum = 1;
-    @ApiComment(value = "每页条数", sample = "2")
+    @ApiModelProperty("每页条数,默认1")
     private Integer pageSize = 1;
 
     public Integer getPageNum() {
@@ -13,7 +15,9 @@ public class Page {
     }
 
     public void setPageNum(Integer pageNum) {
-        this.pageNum = pageNum;
+        if(pageNum != null){
+            this.pageNum = pageNum;
+        }
     }
 
     public Integer getPageSize() {
@@ -21,6 +25,8 @@ public class Page {
     }
 
     public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
+        if(pageSize != null){
+            this.pageSize = pageSize;
+        }
     }
 }
