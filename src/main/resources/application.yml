@@ -20,5 +20,14 @@ spring:
         max-idle: 8
         min-idle: 2
         max-wait: 100
+  security:
+    basic:
+      enabled: true
+      path: /doc.html
+    user:
+      name: admin
+      password: root
 mybatis:
   mapper-locations: classpath:com/web/demo/mapper/*.xml
+swagger:
+  show: true #是否开启API文档显示

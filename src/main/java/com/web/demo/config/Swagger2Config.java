@@ -20,6 +20,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class Swagger2Config {
+    @Value("${swagger.show}")
+    private boolean swaggerShow;
 
     @Bean
     public Docket createRestApi() {
@@ -28,7 +30,7 @@ public class Swagger2Config {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.web.demo"))
                 .paths(PathSelectors.any())
-                .build();
+                .build().enable(swaggerShow);
     }
 
     private ApiInfo apiInfo() {

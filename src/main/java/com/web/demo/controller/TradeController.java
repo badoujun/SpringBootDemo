@@ -7,11 +7,14 @@ import com.web.demo.vo.result.BaseResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.RedisConnectionFailureException;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -29,9 +32,10 @@ public class TradeController {
     @ResponseBody
     public BaseResult<List<Trade>> selectTradeAll(Page page){
         BaseResult<List<Trade>> result = new BaseResult<>();
+        List<Trade> list = new ArrayList<>();
         try {
             String request_key = "tradeList_" + page.getPageNum() + "_" + page.getPageSize();
-            List<Trade> list = (List<Trade>)redisTemplate.opsForValue().get(request_key);
+             list = (List<Trade>)redisTemplate.opsForValue().get(request_key);
             if(list == null || list.size() == 0)
             {
                 list = tradeService.select(page);
@@ -40,6 +44,12 @@ public class TradeController {
             }else{
                 System.out.println("redis查询");
             }
+            result.setData(list);
+            result.setStatusCode(1);
+            result.setMessage("success");
+        }catch (RedisConnectionFailureException e){//Redis未开启
+            e.printStackTrace();
+            list = tradeService.select(page);
             result.setData(list);
             result.setStatusCode(1);
             result.setMessage("success");

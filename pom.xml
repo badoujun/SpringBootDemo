@@ -95,6 +95,13 @@
             <artifactId>swagger-bootstrap-ui</artifactId>
             <version>1.9.1</version>
         </dependency>
+
+        <!-- 鉴权 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
