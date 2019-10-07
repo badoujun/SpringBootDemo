@@ -13,7 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>demo</name>
     <description>Demo project for Spring Boot</description>
-
+    <packaging>jar</packaging>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -97,14 +97,16 @@
         </dependency>
 
         <!-- 鉴权 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-security</artifactId>-->
+        <!--</dependency>-->
 
     </dependencies>
 
     <build>
+        <!-- mvn clean package -Dmaven.test.skip=true -->
+        <finalName>JarDemo</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
