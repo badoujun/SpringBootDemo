@@ -31,3 +31,5 @@ mybatis:
   mapper-locations: classpath:com/web/demo/mapper/*.xml
 swagger:
   show: true #是否开启API文档显示
+server:
+  port: 8090
